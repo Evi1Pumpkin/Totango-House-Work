@@ -1,0 +1,30 @@
+<mat-card class="card" *ngIf="book">
+    <mat-card-header>
+        <mat-card-title class="book-title">{{book.title}}</mat-card-title>
+        <mat-card-subtitle>{{book.authors.join(', ')}}</mat-card-subtitle>
+        <img mat-card-image class="book-image" src="{{book.thumbnailUrl}}" alt="{{book.title }}">
+      </mat-card-header>
+      <mat-card-content class="book-desc">
+        <p>
+            <span class="bold">ISBN code: </span>
+            <span>{{book.isbn}}</span>
+        </p>
+        <p>
+            <span class="bold">Publish Date: </span>
+            <span>{{book.publishedDate}}</span>
+        </p>
+        <p>
+            <span class="bold">Genre: </span>
+            <span>{{book.genre}}</span>
+        </p>
+        <p>
+          {{book.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/" > 
+                    Return
+            </button>
+            <span class="price">{{book.price | shekel}}</span>
+    </mat-card-actions>
+</mat-card>

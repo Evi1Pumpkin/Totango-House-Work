@@ -1,0 +1,101 @@
+<mat-card class="card">
+		<mat-card-header>
+			<mat-card-title>Add a new book</mat-card-title>
+		</mat-card-header>
+		<mat-card-content> 
+	
+			<!-- Form Template when edit button clicked with values from item -->
+			<div class="formEdit">
+					<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit(reactiveForm.value)">
+	
+						<!-- Title -->
+						<mat-form-field class="full-width">
+							<input [formControl]="reactiveForm.controls['title']"
+								matInput
+								type="text"
+								placeholder="Title" 
+								>
+							<mat-hint *ngIf="titleError" [ngStyle]="{'color': 'red'}" align="start">{{titleError}}</mat-hint>
+						</mat-form-field>
+	
+						<!-- Isbn -->
+						<mat-form-field>
+							<input [formControl]="reactiveForm.controls['isbn']"
+								matInput
+								type="text"
+								placeholder="ISBN code" 
+								>
+							<mat-hint *ngIf="isbnError" [ngStyle]="{'color': 'red'}" align="start">{{isbnError}}</mat-hint>
+						</mat-form-field>
+			
+	
+						<!-- Publish date -->
+						<mat-form-field>
+							<input
+								[formControl]="reactiveForm.controls['publishDate']"
+								matInput 
+								type="text" 
+								placeholder="Publish date DD-MM-YYYY" 
+								>
+							<mat-hint *ngIf="publishDateError" [ngStyle]="{'color': 'red'}" align="start">{{publishDateError}}</mat-hint>
+						</mat-form-field>
+	
+						<!-- Author -->
+						<mat-form-field class="full-width">
+							<input
+								[formControl]="reactiveForm.controls['authors']"
+								matInput
+								type="text" 
+								placeholder="Authors names" 
+								>
+							<mat-hint *ngIf="authorError" [ngStyle]="{'color': 'red'}" align="start">{{authorsError}}</mat-hint>
+						</mat-form-field>
+	
+						<!-- Description -->
+						<mat-form-field class="full-width">
+								<textarea [formControl]="reactiveForm.controls['description']" matInput type="text" placeholder="description"></textarea>
+						</mat-form-field>
+	
+						<!-- thumbnailUrl  -->
+						<mat-form-field class="full-width">
+							<input
+								[formControl]="reactiveForm.controls['thumbnailUrl']"
+								matInput
+								type="text" 
+								placeholder="Thumbnail picture URL" 
+								>
+							<mat-hint *ngIf="thumbnailUrlError" [ngStyle]="{'color': 'red'}" align="start">{{thumbnailUrlError}}</mat-hint>
+						</mat-form-field>
+	
+						<!-- genre  -->
+						<mat-form-field class="full-width">
+							<input
+								[formControl]="reactiveForm.controls['genre']"
+								matInput
+								type="text" 
+								placeholder="Genre" 
+								>
+							<mat-hint *ngIf="genreError" [ngStyle]="{'color': 'red'}" align="start">{{genreError}}</mat-hint>
+						</mat-form-field>
+	
+						<!-- price  -->
+						<mat-form-field>
+							<input
+								[formControl]="reactiveForm.controls['price']"
+								matInput
+								type="number" 
+								placeholder="Price" 
+								>
+							<mat-hint *ngIf="priceError" [ngStyle]="{'color': 'red'}" align="start">{{priceError}}</mat-hint>
+						</mat-form-field>
+	
+						<!-- Action buttons -->
+						<mat-card-actions>
+							<button class="submit_button" mat-raised-button color="primary" type="submit" [disabled]="!reactiveForm.valid">Submit</button>
+							<button mat-raised-button color="primary" type="button" routerLink="/">Cancel</button>
+						</mat-card-actions>
+					</form>
+			</div>
+	
+		</mat-card-content>
+	</mat-card>

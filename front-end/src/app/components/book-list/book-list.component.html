@@ -1,0 +1,7 @@
+<div *ngIf="(books$ | async).length > 0" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center">
+        <app-book-tile [book]="book" *ngFor="let book of books$ | async"  ></app-book-tile>
+</div>
+
+<div *ngIf="(books$ | async).length < 1" fxLayoutAlign="center">
+        There are no books in your store
+</div>

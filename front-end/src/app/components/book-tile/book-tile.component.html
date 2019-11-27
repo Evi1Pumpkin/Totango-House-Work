@@ -1,0 +1,23 @@
+<mat-card class="book-card">
+    <img *ngIf="book.thumbnailUrl" mat-card-image class="book-image" src="{{book.thumbnailUrl}}" alt="{{book.title}}">
+    <img *ngIf="!book.thumbnailUrl" mat-card-image class="book-image" src="{{imageDefault}}" alt="{{book.title}}">
+    <mat-card-header>
+      <mat-card-title class="book-title">{{book.title | truncate: 55}}</mat-card-title>
+      <mat-card-subtitle>{{book.authors.join(', ') | truncate}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="book-desc">
+      <p>
+        {{book.description | truncate: 250}}
+      </p>
+      
+    </mat-card-content>
+    <span class="price">{{book.price | shekel}}</span>
+    <mat-card-actions>
+      <button mat-mini-fab color="primary" (click)="deleteBook()" > 
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+      <button class="read-more-btn" mat-raised-button (click)="routeToBookPage()" > 
+          read more
+      </button>
+    </mat-card-actions>
+</mat-card>
